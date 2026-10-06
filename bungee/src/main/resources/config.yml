@@ -1,0 +1,14 @@
+# Proxy config — database credentials must match backend servers
+
+database:
+  host: 127.0.0.1
+  port: 3306
+  name: reports
+  username: root
+  password: ""
+  pool-size: 6
+  use-ssl: false
+
+messages:
+  prefix: "&8[&cReports&8] &7"
+  no-permission: "&cNo permission."

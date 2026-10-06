@@ -1,8 +1,4 @@
-# MineStormReportSystem — backend configuration
-# Database settings need a restart. Everything else reloads with /my-task reload.
-
 database:
-  # SQLITE (automatic, no setup) or MYSQL (network)
   type: SQLITE
   sqlite-file: reports.db
   mysql:
@@ -57,28 +53,28 @@ gui:
 
 messages:
   prefix: "&8[&cReports&8] &7"
-  no-permission: "&cYou do not have permission to do that."
-  players-only: "&cThis command can only be used by players."
+  no-permission: "&cYou do not have permission."
+  players-only: "&cPlayers only."
   usage-report: "&cUsage: &f/report <player>"
-  player-not-found: "&cThat player could not be found."
+  player-not-found: "&cPlayer not found."
   cannot-report-self: "&cYou cannot report yourself."
-  cooldown: "&cPlease wait &f{seconds}s &cbefore submitting another report."
-  already-reported: "&cYou already have an open report against that player."
-  report-submitted: "&aYour report against &f{player} &afor &e{category} &awas submitted. Thank you!"
-  report-failed: "&cYour report could not be saved. Please try again later."
-  database-error: "&cA database error occurred. Check the console for details."
-  admin-alert: "&c&lNEW REPORT &8» &f{reporter} &7reported &f{player} &7for &e{category}&7. Use &f/my-task&7."
-  report-already-handled: "&cThat report was already handled by someone else."
-  no-punishment: "&cNo punishment is configured for &e{category}&c."
-  admin-approved: "&aReport &f#{id} &aapproved. Executed: &f/{command}"
-  admin-rejected: "&eReport &f#{id} &ewas rejected and deleted."
-  admin-invalid: "&eReport &f#{id} &ewas marked as an invalid category and deleted."
-  reporter-approved: "&aA report you submitted against &f{player} &awas reviewed and action was taken."
-  reporter-rejected: "&7Your report against &f{player} &7was reviewed and found invalid."
-  reporter-invalid: "&7Your report against &f{player} &7was filed under the wrong category."
+  cooldown: "&cPlease wait &f{seconds}s."
+  already-reported: "&cYou already reported that player."
+  report-submitted: "&aReport against &f{player} &afor &e{category} &asubmitted."
+  report-failed: "&cReport failed. Try later."
+  database-error: "&cDatabase error. Check console."
+  admin-alert: "&c&lNEW REPORT &8» &f{reporter} &7reported &f{player} &7for &e{category}&7."
+  report-already-handled: "&cThat report was already handled."
+  no-punishment: "&cNo punishment for &e{category}&c."
+  admin-approved: "&aReport &f#{id} &aapproved: &f/{command}"
+  admin-rejected: "&eReport &f#{id} &erejected."
+  admin-invalid: "&eReport &f#{id} &eclosed as invalid."
+  reporter-approved: "&aYour report against &f{player} &awas accepted."
+  reporter-rejected: "&7Your report against &f{player} &7was found invalid."
+  reporter-invalid: "&7Your report against &f{player} &7was wrong category."
   teleported: "&aTeleported to &f{player}&a."
-  grim-unavailable: "&eGrimAC is not hooked. Showing stored alerts only."
-  evidence-empty: "&7No entries found for &f{player}&7."
+  grim-unavailable: "&eGrimAC not hooked."
+  evidence-empty: "&7No entries for &f{player}&7."
   evidence-header: "&7Last &f{count} &7entries for &f{player} &8(&7{source}&8)&7:"
   evidence-line: "&8[{time}] &7{title}&8: &f{text}"
-  reloaded: "&aConfiguration and punishments reloaded."
+  reloaded: "&aReloaded."

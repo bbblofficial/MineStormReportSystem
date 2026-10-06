@@ -1,4 +1,4 @@
-package com.minestorm.reportsystem.common.model;
+package com.minestorm.reportsystem.model;
 
 import java.util.UUID;
 
@@ -11,12 +11,9 @@ public final class Report {
     private final ReportCategory category;
     private final long createdAt;
 
-    public Report(int id, UUID reporterUuid, String reporterName,
-                  UUID targetUuid, String targetName,
-                  ReportCategory category, long createdAt) {
-        this.id = id; this.reporterUuid = reporterUuid; this.reporterName = reporterName;
-        this.targetUuid = targetUuid; this.targetName = targetName;
-        this.category = category; this.createdAt = createdAt;
+    public Report(int id, UUID rU, String rN, UUID tU, String tN, ReportCategory c, long t) {
+        this.id = id; this.reporterUuid = rU; this.reporterName = rN;
+        this.targetUuid = tU; this.targetName = tN; this.category = c; this.createdAt = t;
     }
     public int id() { return id; }
     public UUID reporterUuid() { return reporterUuid; }

@@ -1,5 +1,3 @@
-# Punishments executed when an admin approves a report.
-
 commands:
   ban: "ban {player} {duration} {reason}"
   mute: "mute {player} {duration} {reason}"
@@ -8,19 +6,19 @@ categories:
   CHAT_ABUSE:
     type: MUTE
     duration: 1d
-    reason: "Chat Abuse / Spamming (Report #{id})"
+    reason: "Chat Abuse (Report #{id})"
   CHEATING:
     type: BAN
     duration: 30d
-    reason: "Cheating / Hacking (Report #{id})"
+    reason: "Cheating (Report #{id})"
   BAD_NAME:
     type: BAN
     duration: permanent
-    reason: "Inappropriate Name (Report #{id})"
+    reason: "Bad Name (Report #{id})"
   GUILD_NAME:
     type: BAN
     duration: 7d
-    reason: "Inappropriate Guild Name (Report #{id})"
+    reason: "Bad Guild Name (Report #{id})"
   CROSS_TEAMING:
     type: BAN
     duration: 7d
@@ -28,7 +26,7 @@ categories:
   BAD_SKIN:
     type: BAN
     duration: 3d
-    reason: "Inappropriate Skin / Cape (Report #{id})"
+    reason: "Bad Skin (Report #{id})"
   STATS_BOOSTING:
     type: BAN
     duration: 14d

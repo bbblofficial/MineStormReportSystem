@@ -2,34 +2,25 @@ name: MineStormReportSystem
 main: com.minestorm.reportsystem.ReportSystem
 version: 1.0.0
 author: MineStorm
-description: Advanced GUI-based report system with chat logging, Grim and punishment integration.
+description: Advanced GUI report system
 api-version: 1.13
-softdepend: [LuckPerms, GrimAC, LibertyBans, Essentials]
 
 commands:
   report:
-    description: Report a player for breaking the rules.
+    description: Report a player
     usage: /report <player>
-    aliases: [reportplayer]
   my-task:
-    description: Open the admin report review panel.
+    description: Open admin panel
     usage: /my-task [reload]
     aliases: [mytask]
 
 permissions:
+  reports.use: { default: true }
+  reports.admin: { default: op }
+  reports.bypass: { default: op }
   reports.*:
-    description: Grants every ReportSystem permission.
     default: op
     children:
       reports.use: true
       reports.admin: true
       reports.bypass: true
-  reports.use:
-    description: Allows submitting reports with /report.
-    default: true
-  reports.admin:
-    description: Allows reviewing and resolving reports with /my-task.
-    default: op
-  reports.bypass:
-    description: Bypasses the /report cooldown.
-    default: op
