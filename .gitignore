@@ -1,0 +1,20 @@
+# Maven
+target/
+*.iml
+.idea/
+.vscode/
+*.class
+
+# Local run
+run/
+logs/
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

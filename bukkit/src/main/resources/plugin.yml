@@ -1,16 +1,35 @@
 name: MineStormReportSystem
-main: com.minestorm.reportsystem.bukkit.BukkitMain
+main: com.minestorm.reportsystem.ReportSystem
 version: 1.0.0
 author: MineStorm
-description: Backend bridge for MineStormReportSystem
+description: Advanced GUI-based report system with chat logging, Grim and punishment integration.
 api-version: 1.13
-softdepend: [GrimAC, LibertyBans]
+softdepend: [LuckPerms, GrimAC, LibertyBans, Essentials]
 
-# دستور /report اینجا ثبت نمی‌شه — پروکسی اون رو هندل می‌کنه.
-# CommandInterceptor پلاگین‌های دیگه رو کنسل می‌کنه.
+commands:
+  report:
+    description: Report a player for breaking the rules.
+    usage: /report <player>
+    aliases: [reportplayer]
+  my-task:
+    description: Open the admin report review panel.
+    usage: /my-task [reload]
+    aliases: [mytask]
 
 permissions:
-  minestorm.report.use:
+  reports.*:
+    description: Grants every ReportSystem permission.
+    default: op
+    children:
+      reports.use: true
+      reports.admin: true
+      reports.bypass: true
+  reports.use:
+    description: Allows submitting reports with /report.
     default: true
-  minestorm.report.admin:
+  reports.admin:
+    description: Allows reviewing and resolving reports with /my-task.
+    default: op
+  reports.bypass:
+    description: Bypasses the /report cooldown.
     default: op
