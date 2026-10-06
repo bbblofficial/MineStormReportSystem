@@ -1,0 +1,33 @@
+commands:
+  ban: "ban {player} {duration} {reason}"
+  mute: "mute {player} {duration} {reason}"
+
+categories:
+  CHAT_ABUSE:
+    type: MUTE
+    duration: 1d
+    reason: "Chat Abuse / Spamming (Report #{id})"
+  CHEATING:
+    type: BAN
+    duration: 30d
+    reason: "Cheating / Hacking (Report #{id})"
+  BAD_NAME:
+    type: BAN
+    duration: permanent
+    reason: "Inappropriate Name (Report #{id})"
+  GUILD_NAME:
+    type: BAN
+    duration: 7d
+    reason: "Inappropriate Guild Name (Report #{id})"
+  CROSS_TEAMING:
+    type: BAN
+    duration: 7d
+    reason: "Cross-Teaming (Report #{id})"
+  BAD_SKIN:
+    type: BAN
+    duration: 3d
+    reason: "Inappropriate Skin / Cape (Report #{id})"
+  STATS_BOOSTING:
+    type: BAN
+    duration: 14d
+    reason: "Stats Boosting (Report #{id})"

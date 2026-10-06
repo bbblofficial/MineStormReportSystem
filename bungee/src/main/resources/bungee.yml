@@ -1,0 +1,5 @@
+name: MineStormReportSystem
+main: com.minestorm.reportsystem.bungee.BungeeMain
+version: 1.0.0
+author: MineStorm
+description: Proxy-side report system brain

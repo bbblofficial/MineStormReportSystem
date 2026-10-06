@@ -1,0 +1,7 @@
+{
+  "id": "minestormreportsystem",
+  "name": "MineStormReportSystem",
+  "version": "1.0.0",
+  "authors": ["MineStorm"],
+  "main": "com.minestorm.reportsystem.velocity.VelocityMain"
+}
