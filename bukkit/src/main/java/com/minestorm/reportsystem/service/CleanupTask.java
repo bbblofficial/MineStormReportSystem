@@ -1,5 +1,6 @@
 package com.minestorm.reportsystem.service;
 
+import java.util.function.BiConsumer;
 import com.minestorm.reportsystem.ReportSystem;
 
 public final class CleanupTask implements Runnable {

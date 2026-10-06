@@ -1,5 +1,6 @@
 package com.minestorm.reportsystem;
 
+import java.util.function.BiConsumer;
 import com.minestorm.reportsystem.command.MyTaskCommand;
 import com.minestorm.reportsystem.command.ReportCommand;
 import com.minestorm.reportsystem.database.DatabaseManager;

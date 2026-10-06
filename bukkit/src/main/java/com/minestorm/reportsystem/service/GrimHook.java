@@ -1,11 +1,12 @@
 package com.minestorm.reportsystem.service;
 
+import java.util.function.Function;
 import com.minestorm.reportsystem.ReportSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.event.EventExecutor;
 import org.bukkit.event.EventPriority;
+import org.bukkit.plugin.EventExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 

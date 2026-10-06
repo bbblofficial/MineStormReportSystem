@@ -1,5 +1,6 @@
 package com.minestorm.reportsystem.service;
 
+import java.util.function.BiConsumer;
 import com.minestorm.reportsystem.ReportSystem;
 import com.minestorm.reportsystem.model.ChatChannel;
 import com.minestorm.reportsystem.model.ChatRecord;

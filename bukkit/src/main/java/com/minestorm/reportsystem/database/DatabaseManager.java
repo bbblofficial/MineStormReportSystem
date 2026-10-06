@@ -1,5 +1,6 @@
 package com.minestorm.reportsystem.database;
 
+import java.util.function.Supplier;
 import com.minestorm.reportsystem.ReportSystem;
 import com.minestorm.reportsystem.model.ChatChannel;
 import com.minestorm.reportsystem.model.ChatRecord;
