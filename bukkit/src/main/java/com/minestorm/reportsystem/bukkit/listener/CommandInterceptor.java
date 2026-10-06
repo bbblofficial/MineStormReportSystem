@@ -8,24 +8,30 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
- * اینترسپتور سمت بک‌اند.
+ * اینترسپتور /report و /my-task.
  *
- * هر پلاگین دیگری روی بک‌اند که /report داشته باشه رو کنسل می‌کنه
- * و به بازیکن پیام می‌ده که از سیستم ماین‌استورم استفاده کنه.
- *
- * چرا این کار لازمه؟ چون ممکنه روی سرور بک‌اند پلاگین Report دیگه‌ای
- * نصب باشه که با /report ما تداخل داشته باشه. با این اینترسپتور
- * مطمئن می‌شیم سیستم ما برنده می‌شه.
- *
- * نکته: اگر پروکسی خودش /report رو هندل کنه، اصلاً این رویداد
- * فایر نمی‌شه. این فقط یه fallback امنیتی هست.
+ * روی LOWEST اجرا می‌شود تا قبل از MyCommand، Essentials، CustomCommands
+ * و هر پلاگین دیگری دستور را کنسل کند.
  */
 public final class CommandInterceptor implements Listener {
 
     private final BukkitMain plugin;
+
+    private static final Set<String> REPORT_LABELS = new HashSet<>(Arrays.asList(
+            "report", "reportplayer", "report-player",
+            "report_player", "reports", "reportuser"
+    ));
+
+    private static final Set<String> TASK_LABELS = new HashSet<>(Arrays.asList(
+            "my-task", "mytask", "my_task", "mytasks",
+            "reports-admin", "reportsadmin", "adminreport"
+    ));
 
     public CommandInterceptor(BukkitMain plugin) {
         this.plugin = plugin;
@@ -33,42 +39,47 @@ public final class CommandInterceptor implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = false)
     public void onCommand(PlayerCommandPreprocessEvent event) {
-        String msg = event.getMessage();
-        if (msg == null || msg.length() < 2) return;
+        String raw = event.getMessage();
+        if (raw == null || raw.isEmpty() || raw.charAt(0) != '/') return;
 
-        // /report یا /report ...
-        String body = msg.substring(1);
+        String body = raw.substring(1).trim();
+        if (body.isEmpty()) return;
+
         int space = body.indexOf(' ');
-        String label = (space < 0 ? body : body.substring(0, space))
-                .toLowerCase(Locale.ROOT);
-        // حذف namespace اگر هست (مثلاً plugin:report)
+        String label = (space < 0) ? body : body.substring(0, space);
+        String args = (space < 0) ? "" : body.substring(space + 1).trim();
+
+        // حذف namespace (مثل /essentials:report)
         int colon = label.indexOf(':');
         if (colon >= 0) label = label.substring(colon + 1);
 
-        if (!label.equals("report") && !label.equals("reportplayer")
-                && !label.equals("mytask") && !label.equals("my-task")) {
-            return;
-        }
+        label = label.toLowerCase(Locale.ROOT);
 
-        // اگر اینجا رسیدیم، یعنی یه پلاگین دیگه داره این دستور رو هندل می‌کنه
-        // (چون پروکسی هندل نکرده). کنسلش می‌کنیم.
+        boolean isReport = REPORT_LABELS.contains(label);
+        boolean isTask = TASK_LABELS.contains(label);
+
+        if (!isReport && !isTask) return;
+
+        // کنسل کامل — هیچ پلاگین دیگری اجرا نمی‌شود
         event.setCancelled(true);
 
         Player p = event.getPlayer();
 
-        if (label.equals("report") || label.equals("reportplayer")) {
-            String args = (space < 0) ? "" : body.substring(space + 1).trim();
+        if (isReport) {
             if (args.isEmpty()) {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&8[&cReports&8] &7Usage: &f/report <player>"));
+                p.sendMessage(color("&8[&cReports&8] &7Usage: &f/report <player>"));
             } else {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        "&8[&cReports&8] &7This server uses MineStorm reports. "
-                                + "Please use &f/report " + args + " &7(proxy)."));
+                p.sendMessage(color("&8[&cReports&8] &7MineStorm Report System is active. "
+                        + "Use &f/report " + args + " &7to report."));
             }
         } else {
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&8[&cReports&8] &7Use &f/my-task &7on the proxy to view reports."));
+            p.sendMessage(color("&8[&cReports&8] &7Use &f/my-task &7to view reports."));
         }
+
+        plugin.getLogger().info("[MSRS] Intercepted /" + label + " from " + p.getName());
+    }
+
+    private static String color(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
     }
 }

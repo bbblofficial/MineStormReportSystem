@@ -1,0 +1,11 @@
+# MineStormReportSystem — Backend bridge config.
+# این فایل روی بک‌اندهاست. تنظیمات اصلی روی پروکسی هستند.
+
+# فعال بودن bridge
+enabled: true
+
+# اسم سرور (برای لاگ)
+server-name: "backend"
+
+# کانال پیام‌رسانی پروکسی (تغییر نده)
+channel: "minestorm:rs"
