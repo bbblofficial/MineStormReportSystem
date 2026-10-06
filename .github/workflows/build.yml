@@ -26,10 +26,14 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package -DskipTests
 
-      - name: Upload artifacts
+      - name: Upload Bungee JAR
         uses: actions/upload-artifact@v4
         with:
-          name: MineStormReportSystem-JDK${{ matrix.java }}
-          path: |
-            bungee/target/*.jar
-            bukkit/target/*.jar
+          name: MineStorm-Bungee-JDK${{ matrix.java }}
+          path: bungee/target/*.jar
+
+      - name: Upload Bukkit JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: MineStorm-Bukkit-JDK${{ matrix.java }}
+          path: bukkit/target/*.jar

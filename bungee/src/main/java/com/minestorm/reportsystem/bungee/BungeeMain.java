@@ -40,6 +40,9 @@ public final class BungeeMain extends Plugin {
         ProxyServer.getInstance().getPluginManager().registerListener(this,
             new BungeeMessaging(this, database));
 
+        ProxyServer.getInstance().getPluginManager().registerListener(this,
+            new BungeeReportInterceptor(this));
+
         ProxyServer.getInstance().getPluginManager().registerCommand(this,
             new BungeeCommandReport(this, database));
         ProxyServer.getInstance().getPluginManager().registerCommand(this,

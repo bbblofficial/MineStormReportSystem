@@ -4,17 +4,10 @@ version: 1.0.0
 author: MineStorm
 description: Backend bridge for MineStormReportSystem
 api-version: 1.13
-softdepend: [GrimAC, BanManager, LuckPerms, PlaceholderAPI]
+softdepend: [GrimAC, LibertyBans]
 
-commands:
-  report:
-    description: Report a player
-    usage: /report <player>
-    aliases: [reportplayer]
-  my-task:
-    description: Admin report panel
-    usage: /my-task [reload]
-    aliases: [mytask]
+# دستور /report اینجا ثبت نمی‌شه — پروکسی اون رو هندل می‌کنه.
+# CommandInterceptor پلاگین‌های دیگه رو کنسل می‌کنه.
 
 permissions:
   minestorm.report.use:

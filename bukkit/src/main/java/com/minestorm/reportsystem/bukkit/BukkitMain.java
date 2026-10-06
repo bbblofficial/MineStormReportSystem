@@ -2,6 +2,7 @@ package com.minestorm.reportsystem.bukkit;
 
 import com.minestorm.reportsystem.bukkit.gui.GuiListener;
 import com.minestorm.reportsystem.bukkit.listener.ChatListener;
+import com.minestorm.reportsystem.bukkit.listener.CommandInterceptor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BukkitMain extends JavaPlugin {
@@ -17,6 +18,7 @@ public final class BukkitMain extends JavaPlugin {
             new com.minestorm.reportsystem.bukkit.messaging.BukkitMessaging(this));
 
         getServer().getPluginManager().registerEvents(new ChatListener(this), this);
+        getServer().getPluginManager().registerEvents(new CommandInterceptor(this), this);
         getServer().getPluginManager().registerEvents(new GuiListener(), this);
 
         getLogger().info("MineStormReportSystem (Bukkit bridge) enabled.");
